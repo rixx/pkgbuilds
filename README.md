@@ -13,6 +13,16 @@ This is a collection of the `PKGBUILD` files (Arch User Repository install files
 7. `git push`
 
 
+## Index
+
+### in AUR
+
+ - [augenkrebs](augenkrebs-git/)
+ - [hostmux](hostmux-git/)
+
+### private
+
+
 ## Resources
 
  - [general AUR article](https://wiki.archlinux.org/index.php/Arch_User_Repository)
