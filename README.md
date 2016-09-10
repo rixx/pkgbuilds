@@ -19,6 +19,7 @@ This is a collection of the `PKGBUILD` files (Arch User Repository install files
 
  - [augenkrebs](augenkrebs-git/)
  - [hostmux](hostmux-git/)
+ - [python36](python36/)
 
 ### private
 
