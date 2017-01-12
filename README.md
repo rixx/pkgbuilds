@@ -18,8 +18,11 @@ This is a collection of the `PKGBUILD` files (Arch User Repository install files
 ### in AUR
 
  - [augenkrebs](augenkrebs-git/)
+   [![AUR](https://img.shields.io/aur/votes/augenkrebs-git.svg)](https://aur.archlinux.org/packages/augenkrebs-git)
  - [hostmux](hostmux-git/)
+   [![AUR](https://img.shields.io/aur/votes/hostmux-git.svg)](https://aur.archlinux.org/packages/hostmux-git)
  - [python36](python36/)
+   [![AUR](https://img.shields.io/aur/votes/python36.svg)](https://aur.archlinux.org/packages/python36)
 
 ### private
 
