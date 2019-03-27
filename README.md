@@ -2,6 +2,17 @@
 
 This is a collection of the `PKGBUILD` files (Arch User Repository install files) that I maintain.
 
+Feel free to submit PRs if you want to see a change or an update, I'll be likely to merge, test, and push soon.
+
+ - [python38](python38/)
+   [![AUR](https://img.shields.io/aur/votes/python38.svg)](https://aur.archlinux.org/packages/python38)
+ - [python36](python36/)
+   [![AUR](https://img.shields.io/aur/votes/python36.svg)](https://aur.archlinux.org/packages/python36)
+ - [hostmux](hostmux-git/)
+   [![AUR](https://img.shields.io/aur/votes/hostmux-git.svg)](https://aur.archlinux.org/packages/hostmux-git)
+ - [augenkrebs](augenkrebs-git/)
+   [![AUR](https://img.shields.io/aur/votes/augenkrebs-git.svg)](https://aur.archlinux.org/packages/augenkrebs-git)
+
 ## Usage
 
 1. Edit `PKGBUILD`
@@ -11,20 +22,6 @@ This is a collection of the `PKGBUILD` files (Arch User Repository install files
 5. `makepkg --printsrcinfo > .SRCINFO`
 6. `git commit -am 'Meaningful commit message'`
 7. `git push`
-
-
-## Index
-
-### in AUR
-
- - [augenkrebs](augenkrebs-git/)
-   [![AUR](https://img.shields.io/aur/votes/augenkrebs-git.svg)](https://aur.archlinux.org/packages/augenkrebs-git)
- - [hostmux](hostmux-git/)
-   [![AUR](https://img.shields.io/aur/votes/hostmux-git.svg)](https://aur.archlinux.org/packages/hostmux-git)
- - [python36](python36/)
-   [![AUR](https://img.shields.io/aur/votes/python36.svg)](https://aur.archlinux.org/packages/python36)
-
-### private
 
 
 ## Resources
@@ -37,9 +34,3 @@ This is a collection of the `PKGBUILD` files (Arch User Repository install files
  - [.SRCINFO](https://wiki.archlinux.org/index.php/.SRCINFO)
  - [VCS package guidelines](https://wiki.archlinux.org/index.php/VCS_package_guidelines)
  - [Namcap](https://wiki.archlinux.org/index.php/Namcap)
-
-## Structure
-
-I decided to avoid the clusterfuck that is submodules (on a maybe-stable remote, with its own magic hooks everywhere),
-but in truth, every subfolder of this repo is a repo on my machine. Since only I as maintainer can push to those repos
-anyway, I think we should be fine here.
