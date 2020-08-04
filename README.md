@@ -4,6 +4,8 @@ This is a collection of the `PKGBUILD` files (Arch User Repository install files
 
 Feel free to submit PRs if you want to see a change or an update, I'll be likely to merge, test, and push soon.
 
+ - [python39](python39/)
+   [![AUR](https://img.shields.io/aur/votes/python39.svg)](https://aur.archlinux.org/packages/python39)
  - [python38](python38/)
    [![AUR](https://img.shields.io/aur/votes/python38.svg)](https://aur.archlinux.org/packages/python38)
  - [python36](python36/)
