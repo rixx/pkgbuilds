@@ -3,7 +3,7 @@
 
 pkgname=python311
 pkgver=3.11.0a1
-pkgrel=3
+pkgrel=1
 _pyver=3.11.0
 _pybasever=3.11
 _pymajver=3
