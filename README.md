@@ -9,7 +9,8 @@ Feel free to submit PRs if you want to see a change or an update, I'll be likely
  - [python310](python310/)
    [![AUR](https://img.shields.io/aur/votes/python310.svg)](https://aur.archlinux.org/packages/python310)
  - [python39](python39/)
-   [![AUR](https://img.shields.io/aur/votes/python39.svg)](https://aur.archlinux.org/packages/python39)
+   [![AUR](https://img.shields.io/aur/votes/python39.svg)](https://aur.archlinux.org/packages/python39) (current
+   upstream Python version, so not available on AUR. Will be back once Arch updates to 3.10)
  - [python38](python38/)
    [![AUR](https://img.shields.io/aur/votes/python38.svg)](https://aur.archlinux.org/packages/python38)
  - [python36](python36/)
@@ -21,15 +22,16 @@ Feel free to submit PRs if you want to see a change or an update, I'll be likely
  - [augenkrebs](augenkrebs-git/)
    [![AUR](https://img.shields.io/aur/votes/augenkrebs-git.svg)](https://aur.archlinux.org/packages/augenkrebs-git)
 
-## Usage
+## Usage for maintainers
 
-1. Edit `PKGBUILD`
+1. In sub-directory: Edit `PKGBUILD`
 2. `makepkg --check`
 3. `namcap PKGBUILD`
 4. `namcap *.xz`
 5. `makepkg --printsrcinfo > .SRCINFO`
 6. `git commit -am 'Meaningful commit message'`
 7. `git push`
+8. In root directory: `git commit -am [package] Meaningful commit message`
 
 
 ## Resources
