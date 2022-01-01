@@ -15,12 +15,16 @@ Feel free to submit PRs if you want to see a change or an update, I'll be likely
    [![AUR](https://img.shields.io/aur/votes/python38.svg)](https://aur.archlinux.org/packages/python38)
  - [python36](python36/)
    [![AUR](https://img.shields.io/aur/votes/python36.svg)](https://aur.archlinux.org/packages/python36)
- - [python35](python35/)
-   [![AUR](https://img.shields.io/aur/votes/python35.svg)](https://aur.archlinux.org/packages/python35)
  - [hostmux](hostmux-git/)
    [![AUR](https://img.shields.io/aur/votes/hostmux-git.svg)](https://aur.archlinux.org/packages/hostmux-git)
  - [augenkrebs](augenkrebs-git/)
    [![AUR](https://img.shields.io/aur/votes/augenkrebs-git.svg)](https://aur.archlinux.org/packages/augenkrebs-git)
+
+## Discontinued pkgbuilds
+
+Archived pkgbuilds can be found in ``archived``, which includes
+
+ - ``python35`` removed due to age
 
 ## Usage for maintainers
 
