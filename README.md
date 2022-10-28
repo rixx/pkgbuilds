@@ -34,8 +34,10 @@ I'm mostly putting this here so I have a way to copy and paste a friendly answer
 enable optimisations:
 
 This package intentionally doesn't use ``--enable-optimizations``. Enabling optimizations adds a lot of build time – I
-for one would not upgrade my Python as regularly if every update took 40 minutes of heavy CPU use. Adding the flag is
-easy to do on your own – grab the repo, add the flag, ``makepkg``. Imo adding it by default would be a poor choice.
+for one would not upgrade my Python as regularly if every update took 25-40 minutes of heavy CPU use (depending on your
+machine, but laptop was pretty beefy when I got it three years ago, and even 3.11 takes 25 minutes on it). Adding the
+flag is easy to do on your own – grab the repo, add the flag, ``makepkg``. Imo adding it by default would be a poor
+choice.
 
 ## Usage for maintainers
 
