@@ -8,9 +8,9 @@ Feel free to submit PRs if you want to see a change or an update, I'll be likely
    [![AUR](https://img.shields.io/aur/votes/python312.svg)](https://aur.archlinux.org/packages/python312)
  - [python311](python311/)
    [![AUR](https://img.shields.io/aur/votes/python311.svg)](https://aur.archlinux.org/packages/python311)
- - [python310](python310/)
-   [![AUR](https://img.shields.io/aur/votes/python310.svg)](https://aur.archlinux.org/packages/python310)
-   (current upstream Python version, so not available on AUR. Will be back once Arch updates to 3.11)
+   (current upstream Python version, so not available on AUR. Will be back once Arch updates to 3.12)
+ - python310 (used to be the AUR version when [core] was still on 3.9, now somebody else is maintaining the AUR package.
+   I'm still using this one since I prefer the build options.)
  - [python39](python39/)
    [![AUR](https://img.shields.io/aur/votes/python39.svg)](https://aur.archlinux.org/packages/python39)
  - [python38](python38/)
