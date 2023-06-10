@@ -3,7 +3,7 @@
 
 pkgname=python310
 pkgver=3.10.11
-pkgrel=2
+pkgrel=3
 _pybasever=3.10
 _pymajver=3
 pkgdesc="Major release 3.10 of the Python high-level programming language"
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 license=('custom')
 url="https://www.python.org/"
 depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
-makedepends=('bluez-libs' 'mpdecimal' 'gdb')
+makedepends=('bluez-libs' 'mpdecimal' 'gdb' 'tk')
 optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
 source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
 sha256sums=('3c3bc3048303721c904a03eb8326b631e921f11cc3be2988456a42f115daf04c')
