@@ -32,7 +32,6 @@ prepare() {
   # rather than copies shipped in the tarball
   rm -rf Modules/expat
   rm -rf Modules/zlib
-  rm -rf Modules/_ctypes/libffi*
   rm -rf Modules/_decimal/libmpdec
 }
 
@@ -47,7 +46,6 @@ build() {
               --enable-ipv6 \
               --with-system-expat \
               --with-dbmliborder=gdbm:ndbm \
-              --with-system-ffi \
               --with-system-libmpdec \
               --enable-loadable-sqlite-extensions \
               --without-ensurepip \
