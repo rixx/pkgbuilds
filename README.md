@@ -30,16 +30,23 @@ Archived pkgbuilds can be found in ``archived``, which includes
 
  - ``python35`` removed due to age
 
-## A note on Python optimisations
+## Python package FAQ
 
-I'm mostly putting this here so I have a way to copy and paste a friendly answer when people in the AUR comments ask to
-enable optimisations:
+I'm mostly putting these here so I have a way to copy and paste a friendly answer for questions on aur.archlinux.org.
+
+### y u no optimizations??
 
 This package intentionally doesn't use ``--enable-optimizations``. Enabling optimizations adds a lot of build time – I
 for one would not upgrade my Python as regularly if every update took 25-40 minutes of heavy CPU use (depending on your
 machine, but laptop was pretty beefy when I got it three years ago, and even 3.11 takes 25 minutes on it). Adding the
 flag is easy to do on your own – grab the repo, add the flag, ``makepkg``. Imo adding it by default would be a poor
 choice.
+
+### pls add provides=Python
+
+Nope. Been there, done that, got chewed out for it. tl;dr: Provides=Python makes the system assume that if you have
+Python from core and Python from AUR installed, and you remove core Python, then all Python dependencies will continue
+working. Which they won't, obv, so adding `provides=(Python)` (yes, even with a version string!) is misleading and bad.
 
 ## Usage for maintainers
 
