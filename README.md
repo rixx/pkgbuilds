@@ -50,6 +50,8 @@ working. Which they won't, obv, so adding `provides=(Python)` (yes, even with a 
 
 ## Usage for maintainers
 
+These instructions are just intended for me, rixx – you don't have to run through these steps when you submit a PR!
+
 1. In sub-directory: Edit `PKGBUILD`
 2. `makepkg --check`
 3. `namcap PKGBUILD`
