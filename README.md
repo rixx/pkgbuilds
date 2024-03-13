@@ -53,7 +53,7 @@ working. Which they won't, obv, so adding `provides=(Python)` (yes, even with a 
 1. In sub-directory: Edit `PKGBUILD`
 2. `makepkg --check`
 3. `namcap PKGBUILD`
-4. `namcap *.xz`
+4. `namcap *.zst`
 5. `makepkg --printsrcinfo > .SRCINFO`
 6. `git commit -am 'Meaningful commit message'`
 7. `git push`
