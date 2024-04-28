@@ -6,8 +6,6 @@ Feel free to submit PRs if you want to see a change or an update, I'll be likely
 
  - [python313](python313/)
    [![AUR](https://img.shields.io/aur/votes/python313.svg)](https://aur.archlinux.org/packages/python313)
- - [python312](python312/)
-   [![AUR](https://img.shields.io/aur/votes/python312.svg)](https://aur.archlinux.org/packages/python312)
  - [python311](python311/)
    [![AUR](https://img.shields.io/aur/votes/python311.svg)](https://aur.archlinux.org/packages/python311)
    (current upstream Python version, so not available on AUR. Will be back once Arch updates to 3.12)
