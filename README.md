@@ -6,8 +6,6 @@ Feel free to submit PRs if you want to see a change or an update, I'll be likely
 
  - [python313](python313/)
    [![AUR](https://img.shields.io/aur/votes/python313.svg)](https://aur.archlinux.org/packages/python313)
- - python310 (used to be the AUR version when [core] was still on 3.9, now somebody else is maintaining the AUR package.
-   I'm still using this one since I prefer the build options.)
  - [python39](python39/)
    [![AUR](https://img.shields.io/aur/votes/python39.svg)](https://aur.archlinux.org/packages/python39)
  - [python38](python38/)
