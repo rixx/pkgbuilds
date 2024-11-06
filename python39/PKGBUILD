@@ -2,7 +2,7 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python39
-pkgver=3.9.19
+pkgver=3.9.20
 pkgrel=1
 _pybasever=3.9
 _pymajver=3
