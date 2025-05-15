@@ -16,6 +16,8 @@ Feel free to submit PRs if you want to see a change or an update, I'll be likely
    [![AUR](https://img.shields.io/aur/votes/hostmux-git.svg)](https://aur.archlinux.org/packages/hostmux-git)
  - [augenkrebs](augenkrebs-git/)
    [![AUR](https://img.shields.io/aur/votes/augenkrebs-git.svg)](https://aur.archlinux.org/packages/augenkrebs-git)
+ - [http-prompt](http-prompt/)
+   [![AUR](https://img.shields.io/aur/votes/http-prompt.svg)](https://aur.archlinux.org/packages/http-prompt)
 
 ## Discontinued pkgbuilds
 
