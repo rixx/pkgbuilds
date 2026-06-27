@@ -18,6 +18,10 @@ Feel free to submit PRs if you want to see a change or an update, I'll be likely
    [![AUR](https://img.shields.io/aur/votes/augenkrebs-git.svg)](https://aur.archlinux.org/packages/augenkrebs-git)
  - [http-prompt](http-prompt/)
    [![AUR](https://img.shields.io/aur/votes/http-prompt.svg)](https://aur.archlinux.org/packages/http-prompt)
+ - [ttf-peter-wiegel](ttf-peter-wiegel/)
+   [![AUR](https://img.shields.io/aur/votes/ttf-peter-wiegel.svg)](https://aur.archlinux.org/packages/ttf-peter-wiegel)
+ - [ttf-peter-wiegel-ext](ttf-peter-wiegel-ext/)
+   [![AUR](https://img.shields.io/aur/votes/ttf-peter-wiegel-ext.svg)](https://aur.archlinux.org/packages/ttf-peter-wiegel-ext)
 
 ## Discontinued pkgbuilds
 
