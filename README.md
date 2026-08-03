@@ -14,8 +14,6 @@ Feel free to submit PRs if you want to see a change or an update, I'll be likely
    [![AUR](https://img.shields.io/aur/votes/python36.svg)](https://aur.archlinux.org/packages/python36)
  - [hostmux](hostmux-git/)
    [![AUR](https://img.shields.io/aur/votes/hostmux-git.svg)](https://aur.archlinux.org/packages/hostmux-git)
- - [augenkrebs](augenkrebs-git/)
-   [![AUR](https://img.shields.io/aur/votes/augenkrebs-git.svg)](https://aur.archlinux.org/packages/augenkrebs-git)
  - [http-prompt](http-prompt/)
    [![AUR](https://img.shields.io/aur/votes/http-prompt.svg)](https://aur.archlinux.org/packages/http-prompt)
  - [ttf-peter-wiegel](ttf-peter-wiegel/)
@@ -28,6 +26,7 @@ Feel free to submit PRs if you want to see a change or an update, I'll be likely
 Archived pkgbuilds can be found in ``archived``, which includes
 
  - ``python35`` removed due to age
+ - ``augenkrebs-git`` removed due to age
 
 ## Python package FAQ
 
