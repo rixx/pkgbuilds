@@ -1,0 +1,134 @@
+name: build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      packages:
+        description: "Space-separated package dirs to build (empty = all)"
+        required: false
+        default: ""
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.detect.outputs.matrix }}
+      any: ${{ steps.detect.outputs.any }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - id: detect
+        shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          INPUT_PACKAGES: ${{ inputs.packages }}
+          SHA: ${{ github.sha }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+
+          all_pkgs() {
+            # Every top-level dir holding a PKGBUILD, except archived ones.
+            git ls-files '*/PKGBUILD' \
+              | grep -v '^archived/' \
+              | xargs -r -n1 dirname \
+              | sort -u
+          }
+
+          case "$EVENT" in
+            workflow_dispatch)
+              if [ -n "$INPUT_PACKAGES" ]; then
+                pkgs=$(printf '%s\n' $INPUT_PACKAGES)
+              else
+                pkgs=$(all_pkgs)
+              fi
+              ;;
+            pull_request)
+              changed=$(git diff --name-only "$PR_BASE" "$SHA")
+              ;;
+            *)
+              if [ -z "$PUSH_BEFORE" ] || [ "$PUSH_BEFORE" = "0000000000000000000000000000000000000000" ] \
+                 || ! git cat-file -e "$PUSH_BEFORE^{commit}" 2>/dev/null; then
+                # New branch or force-push: no usable base, build everything.
+                pkgs=$(all_pkgs)
+              else
+                changed=$(git diff --name-only "$PUSH_BEFORE" "$SHA")
+              fi
+              ;;
+          esac
+
+          if [ -z "${pkgs+x}" ]; then
+            # Any file inside a package dir counts, not just the PKGBUILD.
+            pkgs=$(printf '%s\n' "$changed" \
+              | sed '/^$/d' \
+              | cut -d/ -f1 \
+              | sort -u \
+              | while read -r d; do
+                  if [ "$d" != "archived" ] && [ -f "$d/PKGBUILD" ]; then echo "$d"; fi
+                done)
+          fi
+
+          echo "changed packages:"
+          printf '%s\n' "$pkgs"
+
+          matrix=$(printf '%s\n' "$pkgs" | sed '/^$/d' | jq -R . | jq -c -s .)
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+          if [ "$matrix" = "[]" ]; then
+            echo "any=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "any=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  build:
+    needs: changes
+    if: needs.changes.outputs.any == 'true'
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg: ${{ fromJSON(needs.changes.outputs.matrix) }}
+    steps:
+      - name: Install base tooling
+        run: |
+          set -euo pipefail
+          pacman -Syu --noconfirm --needed base-devel git namcap pacman-contrib
+
+      - uses: actions/checkout@v4
+
+      - name: Prepare build user
+        run: |
+          set -euo pipefail
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          useradd -m builder
+          echo "builder ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/builder
+          chown -R builder:builder "$GITHUB_WORKSPACE"
+
+      - name: Validate .SRCINFO generation
+        working-directory: ${{ matrix.pkg }}
+        run: sudo -u builder makepkg --printsrcinfo > /dev/null
+
+      - name: Build ${{ matrix.pkg }}
+        working-directory: ${{ matrix.pkg }}
+        run: sudo -u builder makepkg --syncdeps --noconfirm --clean --cleanbuild
+
+      - name: namcap
+        working-directory: ${{ matrix.pkg }}
+        continue-on-error: true
+        run: namcap PKGBUILD *.pkg.tar.zst
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.pkg }}
+          path: ${{ matrix.pkg }}/*.pkg.tar.zst
+          if-no-files-found: error
