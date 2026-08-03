@@ -1,0 +1,55 @@
+--- a/Modules/_decimal/_decimal.c
++++ b/Modules/_decimal/_decimal.c
+@@ -33,6 +33,23 @@
+ #include "complexobject.h"
+ #include "mpdecimal.h"
+ 
++/* mpdecimal >= 2.5.0 dropped UNUSED and CONFIG_64/CONFIG_32 from its
++   public header, and renamed the latter two with an MPD_ prefix. */
++#ifndef UNUSED
++  #if defined(__GNUC__) && !defined(__INTEL_COMPILER)
++    #define UNUSED __attribute__((unused))
++  #else
++    #define UNUSED
++  #endif
++#endif
++#if !defined(CONFIG_64) && !defined(CONFIG_32)
++  #if defined(MPD_CONFIG_64)
++    #define CONFIG_64 1
++  #elif defined(MPD_CONFIG_32)
++    #define CONFIG_32 1
++  #endif
++#endif
++
+ #include <stdlib.h>
+ 
+ #include "docstrings.h"
+@@ -3279,7 +3295,7 @@
+     }
+     else {
+         size_t n = strlen(spec.dot);
+-        if (n > 1 || (n == 1 && !isascii((uchar)spec.dot[0]))) {
++        if (n > 1 || (n == 1 && !isascii((unsigned char)spec.dot[0]))) {
+             /* fix locale dependent non-ascii characters */
+             dot = dotsep_as_utf8(spec.dot);
+             if (dot == NULL) {
+@@ -3288,7 +3304,7 @@
+             spec.dot = PyBytes_AS_STRING(dot);
+         }
+         n = strlen(spec.sep);
+-        if (n > 1 || (n == 1 && !isascii((uchar)spec.sep[0]))) {
++        if (n > 1 || (n == 1 && !isascii((unsigned char)spec.sep[0]))) {
+             /* fix locale dependent non-ascii characters */
+             sep = dotsep_as_utf8(spec.sep);
+             if (sep == NULL) {
+--- a/setup.py
++++ b/setup.py
+@@ -2103,7 +2103,7 @@
+         undef_macros = []
+         if '--with-system-libmpdec' in sysconfig.get_config_var("CONFIG_ARGS"):
+             include_dirs = []
+-            libraries = [':libmpdec.so.2']
++            libraries = ['mpdec']
+             sources = ['_decimal/_decimal.c']
+             depends = ['_decimal/docstrings.h']
+         else:
