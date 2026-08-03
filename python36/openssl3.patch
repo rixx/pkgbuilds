@@ -1,0 +1,35 @@
+--- a/setup.py
++++ b/setup.py
+@@ -877,6 +877,10 @@
+         openssl_ver = 0
+         openssl_ver_re = re.compile(
+             r'^\s*#\s*define\s+OPENSSL_VERSION_NUMBER\s+(0x[0-9a-fA-F]+)' )
++        # OpenSSL 3.0 and later synthesize OPENSSL_VERSION_NUMBER from the
++        # component macros, so there is no hex literal left to scrape.
++        openssl_comp_re = re.compile(
++            r'^\s*#\s*define\s+OPENSSL_VERSION_(MAJOR|MINOR|PATCH)\s+(\d+)' )
+ 
+         # look for the openssl version header on the compiler search path.
+         opensslv_h = find_file('openssl/opensslv.h', [],
+@@ -886,12 +890,21 @@
+             if host_platform == 'darwin' and is_macosx_sdk_path(name):
+                 name = os.path.join(macosx_sdk_root(), name[1:])
+             try:
++                comps = {}
+                 with open(name, 'r') as incfile:
+                     for line in incfile:
+                         m = openssl_ver_re.match(line)
+                         if m:
+                             openssl_ver = int(m.group(1), 16)
+                             break
++                        m = openssl_comp_re.match(line)
++                        if m:
++                            comps[m.group(1)] = int(m.group(2))
++                if not openssl_ver and 'MAJOR' in comps:
++                    # 0xMNN00PP0L
++                    openssl_ver = ((comps.get('MAJOR', 0) << 28) |
++                                   (comps.get('MINOR', 0) << 20) |
++                                   (comps.get('PATCH', 0) << 4))
+             except IOError as msg:
+                 print("IOError while reading opensshv.h:", msg)
+ 
